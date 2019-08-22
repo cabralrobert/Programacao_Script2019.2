@@ -1,0 +1,61 @@
+# capturando docentes
+wget https://www.quixada.ufc.br/docente/
+grep "<h2>" index.html > docentes.txt
+sed -i "s/                //" docentes.txt
+sed -i "s/<h2>//" docentes.txt
+sed -i "s/<\/h2>//" docentes.txt
+sed -i 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚçÇ-/aAaAaAaAeEeEiIoOoOoOuUcC_/' docentes.txt
+sed -i 's/de //' docentes.txt
+sed -i 's/ /_/' docentes.txt
+sed -i 's/ .*//' docentes.txt
+tr A-Z a-z < docentes.txt > docentes_aux.txt
+mv docentes_aux.txt docentes.txt
+rm index.html
+
+# capturando grade curricular
+#wget https://rc.quixada.ufc.br/matriz-curricular/
+
+wget http://ec.quixada.ufc.br/matriz-curricular/
+grep "<td>" index.html > grade.txt
+sort -u grade.txt -o grade.txt
+grep -v "<td>[0-9]" grade.txt | grep -v "<td>&" > grade_aux.txt
+sed -i 's/<td>//' grade_aux.txt
+sed -i 's/<\/td>//' grade_aux.txt
+sed -i 's/Ética, .*/Ética Direito e Legislação/' grade_aux.txt
+sed -i 's/ , .*//' grade_aux.txt
+sed -i 's/, .*//' grade_aux.txt
+sed -i 's/^M.*ais//' grade_aux.txt
+sed -i 's/Optativa//' grade_aux.txt
+sed -i 's/Subtotal//' grade_aux.txt
+sort -u grade_aux.txt -o grade.txt
+rm grade_aux.txt
+sed -i 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚçÇ-/aAaAaAaAeEeEiIoOoOoOuUcC_/' grade.txt
+sed -i 's/ /_/g' grade.txt
+sed -i 's/,//g' grade.txt
+tr A-Z a-z < grade.txt > grade_aux.txt 
+mv grade_aux.txt grade.txt
+sed -i 1d grade.txt
+rm index.html
+
+mkdir -p ufc_quixada/engenharia_de_computacao/grade_curricular ufc_quixada/engenharia_de_computacao/professores ufc_quixada/engenharia_de_computacao/conquistas
+
+mv docentes.txt ufc_quixada/engenharia_de_computacao/professores
+cp scripts/docentes.sh ufc_quixada/engenharia_de_computacao/professores
+
+mv grade.txt ufc_quixada/engenharia_de_computacao/grade_curricular
+cp scripts/grade.sh ufc_quixada/engenharia_de_computacao/grade_curricular
+
+cp scripts/conquistas.sh ufc_quixada/engenharia_de_computacao/conquistas
+cp scripts/disciplinas_conquistas.txt ufc_quixada/engenharia_de_computacao/conquistas
+cp scripts/professores_conquistas.txt ufc_quixada/engenharia_de_computacao/conquistas
+
+cd ufc_quixada/engenharia_de_computacao/conquistas
+./conquistas.sh
+cd ../professores
+./docentes.sh
+cd ../grade_curricular
+./grade.sh
+
+cd ../
+chmod 555 grade_curricular
+chmod 555 professores
