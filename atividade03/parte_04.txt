@@ -1,0 +1,1 @@
+grep -E "\b[[:alpha:]]{8,}" expressoesregulares.txt

@@ -1,0 +1,3 @@
+grep -E "^A" emailsordenados.txt
+grep -E "\bA" emailsordenados.txt
+grep -E ".br$" emailsordenados.txt

@@ -1,0 +1,4 @@
+grep -E " [[:punct:]]$" expressoesregulares.txt
+grep -E "([[:punct:]])([[:alpha:]])" expressoesregulares.txt
+grep -Ev "([[:punct:]])([[:space:]])?([[:upper:]])" expressoesregulares.txt
+grep -Ev "[[:punct:]]( )*$" expressoesregulares.txt
