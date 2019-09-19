@@ -1,0 +1,2 @@
+cut -f7 -d':' /etc/passwd | sort | uniq | cut -f3 -d'/'
+cut -f2 -d'|' despesas.txt | sed 's/,/./' | sed 1,2d | sed 's/R$ //' | xargs | sed 's/ / + /g' | bc

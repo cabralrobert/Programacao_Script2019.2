@@ -1,0 +1,6 @@
+Despesa    | Valor 
+----------------
+Aluguel    | R$ 120,75
+Comida     | R$ 44,80
+Transporte | R$ 20,11
+Duarte     | R$ 35,60

@@ -1,0 +1,4 @@
+sed -i 's/python/python3/' atividade04.py
+sed -i 's/nota[A-Za-z]*/\U&/g' atividade04.py
+sed -i '2i\import time' atividade04.py
+echo 'print(time.ctime())' >> atividade04.py

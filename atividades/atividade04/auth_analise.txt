@@ -1,0 +1,3 @@
+grep "Invalid user" auth.log | wc -l
+grep "Invalid user" auth.log > malditos.txt
+grep "New session" auth.log | grep "robertalmeida" | wc -l
