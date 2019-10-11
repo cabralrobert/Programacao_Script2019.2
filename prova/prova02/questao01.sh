@@ -18,7 +18,7 @@ for i in $(cat $ENTRADA)
 do
     VAR1=$(echo $i | cut -f2 -d":")
     VAR2=$(echo $i | cut -f1 -d":")
-    printf "\n\t\t<a href=%s\"$VAR1\">$VAR2</a>" >> $SAIDA
+    printf "\n\t\t<a href=%s\"http://$VAR1\">$VAR2</a>" >> $SAIDA
     printf "\n\t\t<br>" >> $SAIDA
 done
 
