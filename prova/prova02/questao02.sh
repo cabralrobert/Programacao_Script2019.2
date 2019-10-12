@@ -1,17 +1,24 @@
 #!/bin/bash
 
 bubbleSort() {
-    for i in ${!vet[@]}
+    vetor=($@)
+
+    for i in ${!vetor[@]}
     do
-        for j in ${!vet[@]}
+        for j in ${!vetor[@]}
         do
-            if [ ${vet[$i]} -le ${vet[$j]} ]
+            if [ ${vetor[$i]} -le ${vetor[$j]} ]
             then
-                aux=${vet[$j]}
-                vet[$j]=${vet[$i]}
-                vet[$i]=$aux
+                aux=${vetor[$j]}
+                vetor[$j]=${vetor[$i]}
+                vetor[$i]=$aux
             fi
         done
+    done
+
+    for i in $(seq 0 $(expr $LENGTH - 1))
+    do
+        echo -ne ${vetor[$i]}" "
     done
 }
 
@@ -33,11 +40,8 @@ done
 
 printf "\nOrdenando com BubbleSort...\n"
 
-bubbleSort vet
+bubbleSort ${vet[@]}
 
-for i in $(seq 0 $(expr $LENGTH - 1))
-do
-    echo -ne ${vet[$i]}" "
-done
+
 
 echo ""
