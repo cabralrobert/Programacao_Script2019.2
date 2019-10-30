@@ -1,0 +1,7 @@
+Aluno:Nota1:Nota2:Nota3
+João Marcelo:10.0:10.0:10.0
+Alisson Barbosa:1.0:2.0:3.0
+Jeandro Bezerra:7.0:8.0:9.0
+Marcos Dantas:5.0:4.0:6.0
+Michel Sales:3.0:4.0:2.0
+Robert Cabral:10.0:7.3:9.8
