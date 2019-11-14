@@ -199,7 +199,6 @@ jogo() {
 
     done
 
-    echo $RETORNO
     return $RETORNO
 }
 
